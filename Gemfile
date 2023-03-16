@@ -42,6 +42,32 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "simple_calendar", "~> 2.4"
+
+gem 'devise'
+
+gem "ransack", "~> 3.2"
+gem 'cloudinary'
+gem "pagy", "~> 5.10"
+
+gem 'wicked_pdf'
+gem "wkhtmltopdf-binary", group: :development
+gem "wkhtmltopdf-heroku", group: :production
+
+gem "rqrcode", "~> 2.1"
+gem 'chartjs-ror', '~> 2.2'
+
+gem 'rails-i18n'
+
+
+gem 'sassc', '~> 2.2'
+gem 'jquery-ui-rails'
+
+gem 'image_processing'
+gem 'activestorage-validator'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

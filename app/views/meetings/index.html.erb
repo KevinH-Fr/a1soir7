@@ -1,0 +1,46 @@
+    <div class="bloc-entete-model">
+      <div class="card card-header entete-index">
+        <div class="row m-0 p-0">
+          <div class="col-11">
+            <strong>CALENDRIER</strong> 
+          </div>
+          <div class="col-1 text-end m-0 p-0">
+            <span class="badge rounded-pill counter-model-dashboard"><%= Meeting.count %></span>
+          </div>
+        </div>
+      </div> 
+      
+    </div>
+
+    <div class="text-center"> 
+
+      <%= month_calendar(events: @meetings_periode) do |date, meetings| %>
+        <div class="day">
+          <%= date.day %>
+        </div>
+
+        <% meetings.each do |meeting| %>
+          <div class="card-header">
+            <div class="card-title">
+              <%= link_to meeting.full_name, meeting, class:"text-primary" %>
+            </div>
+            <div class="card-body"> 
+              <p class="card-text">
+                <%= meeting.start_time.strftime("%H:%M") if meeting.start_time.present? %>
+                <%= meeting.end_time.strftime('%H:%M') if meeting.end_time.present? %>
+              </p>
+            </div>
+        <% end %>
+      <% end %>
+
+      <hr>
+      <div class="text-end">
+       <%= link_to "S'abonner au calendrier", meetings_url(protocol: :webcal, format: :ics), 
+        class:"btn btn-sm btn-primary fw-bold" %>
+      </div>
+     <br> <br> <br>
+
+    </div>
+
+    <%= render "meetings/footer" %>
+   
