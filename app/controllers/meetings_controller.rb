@@ -26,18 +26,22 @@ class MeetingsController < ApplicationController
         #   e.dtstart     = meeting.start_time 
         #   e.dtend       = meeting.end_time 
 
+        e.last_modified = Time.now.utc
+
         e.dtstart     = meeting.start_time.in_time_zone("Paris")
         e.dtend       = meeting.end_time.in_time_zone("Paris")
          
            e.summary     = meeting.full_name 
             e.description = meeting.full_details
             e.location    = meeting.lieu
-            e.uid         = "newA1soir7_1#{meeting.id.to_s}"
+            e.uid         = "newA1soir7_2#{meeting.id.to_s}"
             e.sequence    = Time.now.to_i
           end
         end
         
         cal.publish
+        response.headers['Content-Type'] = 'text/calendar; charset=UTF-8'
+       
         render plain: cal.to_ical
         
       end 
