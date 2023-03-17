@@ -23,16 +23,16 @@ class MeetingsController < ApplicationController
         @meetings.each do | meeting |
 
           cal.event do |e|
-           # e.dtstart     = meeting.start_time 
-           # e.dtend       = meeting.end_time 
+        #   e.dtstart     = meeting.start_time 
+        #   e.dtend       = meeting.end_time 
 
-           e.dtstart     = Icalendar::Values::DateTime.new(meeting.start_time, tzid: "Europe/Paris")
-           e.dtend       = Icalendar::Values::DateTime.new(meeting.end_time, tzid: "Europe/Paris")
+        e.dtstart     = meeting.start_time.in_time_zone("Paris")
+        e.dtend       = meeting.end_time.in_time_zone("Paris")
          
            e.summary     = meeting.full_name 
             e.description = meeting.full_details
             e.location    = meeting.lieu
-            e.uid         = "UNIQUE#{meeting.id.to_s}"
+            e.uid         = "newA1soir7_1#{meeting.id.to_s}"
             e.sequence    = Time.now.to_i
           end
         end

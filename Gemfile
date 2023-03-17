@@ -43,6 +43,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 gem "simple_calendar", "~> 2.4"
+gem "icalendar"
 
 gem 'devise'
 
